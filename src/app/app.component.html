@@ -1,0 +1,36 @@
+<h1>
+  {{title}}
+</h1>
+<ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.$value}}
+  </li>
+</ul>
+
+
+<h3>Log in</h3>
+<form #f="ngForm" [hidden]="authed">
+  <table>
+    <tr>
+      <td>Email:</td>
+      <td><input type="email" [(ngModel)]="email" name="email" required/></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input type="password" [(ngModel)]="pw" name="pw" required/></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button type="submit" (click)="login()">Log in</button></td>
+    </tr>
+    
+    <tr>
+      <td [hidden]="!authed">Successfully logged in!</td>
+      <td [hidden]="authed">Not logged in</td>
+      <td></td>
+    </tr>
+  </table>
+</form>
+<p><em>See comments in app.ts</em></p>
+
+<button (click)="signOut()" [hidden]="!authed">Log out</button><
